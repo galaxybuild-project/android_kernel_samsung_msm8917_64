@@ -105,10 +105,6 @@
 
 		venus_mem: venus_region@0 {
 			compatible = "shared-dma-pool";
-			reusable;
-			alloc-ranges = <0x0 0x80000000 0x0 0x10000000>;
-			alignment = <0 0x400000>;
-			size = <0 0x0800000>;
 		};
 
 		secure_mem: secure_region@0 {
@@ -116,7 +112,6 @@
 			reusable;
 			alignment = <0 0x400000>;
 			size = <0 0x7000000>;
-			status = "disabled";
 		};
 
 		qseecom_mem: qseecom_region@0 {
@@ -993,7 +988,6 @@
 		HSUSB_1p8-supply = <&pm8917_l7>;
 		HSUSB_3p3-supply = <&pm8917_l13>;
 		qcom,vdd-voltage-level = <0 1200000 1200000>;
-		vbus_otg-supply = <&smbcharger_charger_otg>;
 
 		qcom,hsusb-otg-phy-type = <3>; /* SNPS Femto PHY */
 		qcom,hsusb-otg-mode = <3>; /* OTG mode */
