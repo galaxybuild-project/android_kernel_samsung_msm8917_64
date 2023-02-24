@@ -60,7 +60,7 @@ is_kryo_midr(const struct arm64_cpu_capabilities *entry)
 
 DEFINE_PER_CPU_READ_MOSTLY(struct bp_hardening_data, bp_hardening_data);
 
-#ifdef CONFIG_KVM
+#ifdef CONFIG_KVM_nvm
 extern char __psci_hyp_bp_inval_start[], __psci_hyp_bp_inval_end[];
 
 static void __copy_hyp_vect_bpi(int slot, const char *hyp_vecs_start,
