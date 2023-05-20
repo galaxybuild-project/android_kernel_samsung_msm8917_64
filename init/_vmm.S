@@ -19,7 +19,7 @@
 
 #include <linux/vmm.h>
 
-#define vmm_ELF_PATH "/home/ubuntu/UltraDisk/Kernel/android_kernel_samsung_msm8917_64/init/vmm.elf"
+#define vmm_ELF_PATH "/home/mahiro/android_kernel_samsung_msm8917_64/init/vmm.elf"
 
 #define SMC_64BIT_RET_MAGIC 0xC2000401
 
