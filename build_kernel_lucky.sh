@@ -28,13 +28,13 @@ export DEFCONFIG=$DEF
 export LOCALVERSION=$VERSION
 
 # Export Kernel Version
-export KBUILD_BUILD_VERSION="LuckyKernel-1.2-Public-MSM8917"
+export KBUILD_BUILD_VERSION="LuckyKernel-1.3-Development-MSM8917"
 
 # Export Username and machine name
 export KBUILD_BUILD_USER=mahirodev
 export KBUILD_BUILD_HOST=blueskychan-server
 export KBUILD_BUILD_HOST=LuckyKernel-Project 
-# // i told you, luckykernel developer is just watching onii-chan i'm now your sister too much and this happen xD
+# // i told you, luckykernel developer is just watching onimai i'm now your sister too much and this happens xD
 
 # Color definition
 red=`tput setaf 1`
@@ -47,8 +47,14 @@ white=`tput setaf 7`
 reset=`tput sgr0`
 
 clear
-echo "Wait a seconds, we will take you to menuconfig"
-make menuconfig $ARCH
+echo "Making everything is clean..."
+make clean
+make mrproper 
+make clean ARCH=arm64
+make mrproper ARCH=arm64
+rm -rf out
+echo "let make menuconfig!"
+make menuconfig
 clear
 echo -e "*****************************************************"
 echo    "        Compiling kernel using android toolchan       "
