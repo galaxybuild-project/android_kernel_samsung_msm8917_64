@@ -3,7 +3,7 @@
 # Linux/arm64 3.18.140 Kernel Configuration
 #
 
-CONFIG_LOCALVERSION="-LuckyKernelProject-v1.3-AOSP-Perf"
+CONFIG_LOCALVERSION="-LuckyKernelProject-v1.3-Stable"
 CONFIG_AUDIT=y
 CONFIG_NO_HZ=y
 CONFIG_HIGH_RES_TIMERS=y
