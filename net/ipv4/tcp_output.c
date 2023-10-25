@@ -257,16 +257,13 @@ void tcp_select_initial_window(int __space, __u32 mss,
 			(*rcv_wscale)++;
 		}
 	}
-
+	/* Lock the initial TCP window size to 256K*/
+	*rcv_wnd = 262144;
 	if (mss > (1 << *rcv_wscale)) {
 		if (!init_rcv_wnd) /* Use default unless specified otherwise */
 			init_rcv_wnd = tcp_default_init_rwnd(mss);
 		*rcv_wnd = min(*rcv_wnd, init_rcv_wnd * mss);
 	}
-
-	/* Lock the initial TCP window size to 64K*/
-	*rcv_wnd = 64240;
-
 
 	/* Set the clamp no higher than max representable value */
 	(*window_clamp) = min(65535U << (*rcv_wscale), *window_clamp);

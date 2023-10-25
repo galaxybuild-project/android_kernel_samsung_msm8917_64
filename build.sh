@@ -6,7 +6,7 @@ export ANDROID_MAJOR_VERSION=p
 COMMON_ARGS="-C $(pwd) O=$(pwd)/${OUT_DIR} ARCH=arm64 CROSS_COMPILE=aarch64-linux-android- KCFLAGS=-mno-android" 
 
 # Export toolchain
-export PATH=/home/${USER}/MihariLabs/Toolschain/AndroidKernel/aarch64-linux-android-4.9/bin/:$PATH export ARCH=arm64
+export PATH=/home/${USER}/BuildDrive/Toolchain/aarch64-linux-android-4.9/bin/:$PATH export ARCH=arm64
 
 # Just checking...
 which aarch64-linux-android-gcc
@@ -24,7 +24,7 @@ export SUBARCH=arm64
 
 # Set kernel name and defconfig
 # export VERSION=
-DEF=j6primelte_lucky_defconfig
+DEF=j6primelte_defconfig
 export DEFCONFIG=$DEF
 
 # Tell me a project/kernel name
@@ -34,7 +34,7 @@ export ProjectName="LuckyKernel for MSM8917"
 export VERSION=$(make kernelversion)
 
 # Export Kernel Version
-export KBUILD_BUILD_VERSION="LuckyKernel-1.3-Stable-MSM8917"
+export KBUILD_BUILD_VERSION="LuckyKernel-1.4-DEV-MSM8917"
 
 # Export Username and machine name
 export KBUILD_BUILD_USER=${USER}
