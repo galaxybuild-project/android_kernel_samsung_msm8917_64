@@ -24,17 +24,18 @@ export SUBARCH=arm64
 
 # Set kernel name and defconfig
 # export VERSION=
+# For J4+, change to j4primelte_defconfig
 DEF=j6primelte_defconfig
 export DEFCONFIG=$DEF
 
 # Tell me a project/kernel name
-export ProjectName="LuckyKernel for MSM8917"
+export ProjectName="LuckyKernel for Samsung Galaxy J4+/J6+"
 
 # Use make kernelversion to get kernel source version
 export VERSION=$(make kernelversion)
 
 # Export Kernel Version
-export KBUILD_BUILD_VERSION="LuckyKernel-1.4-DEV-MSM8917"
+export KBUILD_BUILD_VERSION="DEVELOPMENT STAGES"
 
 # Export Username and machine name
 export KBUILD_BUILD_USER=${USER}
