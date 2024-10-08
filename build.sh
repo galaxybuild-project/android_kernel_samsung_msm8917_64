@@ -1,12 +1,13 @@
 #!/bin/bash
 
 # Export ARGS, OUTPUT FOLDER, ANDROID MAJOR VERSION
-OUT_DIR=out 
+OUT_DIR=out
 export ANDROID_MAJOR_VERSION=p
-COMMON_ARGS="-C $(pwd) O=$(pwd)/${OUT_DIR} ARCH=arm64 CROSS_COMPILE=aarch64-linux-android- KCFLAGS=-mno-android" 
+COMMON_ARGS="-C $(pwd) O=$(pwd)/${OUT_DIR} ARCH=arm64 CROSS_COMPILE=aarch64-linux-android- KCFLAGS=-mno-android"
 
 # Export toolchain
-export PATH=/home/${USER}/BuildDrive/Toolchain/aarch64-linux-android-4.9/bin/:$PATH export ARCH=arm64
+export PATH=/home/${USER}/galaxybuild-project/Toolchains/aarch64-linux-android-4.9/bin/:$PATH
+export ARCH=arm64
 
 # Just checking...
 which aarch64-linux-android-gcc
@@ -23,25 +24,21 @@ export ARCH=arm64
 export SUBARCH=arm64
 
 # Set kernel name and defconfig
-# export VERSION=
-# For J4+, change to j4primelte_defconfig
-DEF=j6primelte_defconfig
+DEF=j4primelte_defconfig
 export DEFCONFIG=$DEF
 
 # Tell me a project/kernel name
-export ProjectName="LuckyKernel for Samsung Galaxy J4+/J6+"
+export ProjectName="LuckyKernel for MSM8917"
 
 # Use make kernelversion to get kernel source version
 export VERSION=$(make kernelversion)
 
 # Export Kernel Version
-export KBUILD_BUILD_VERSION="DEVELOPMENT STAGES"
+export KBUILD_BUILD_VERSION="Stable Release"
 
 # Export Username and machine name
 export KBUILD_BUILD_USER=${USER}
 export KBUILD_BUILD_HOST=$(uname -n)
-# export KBUILD_BUILD_HOST=LuckyKernel-Project 
-# // i told you, luckykernel developer is just watching onimai i'm now your sister too much and this happens xD
 
 # Color definition
 red=`tput setaf 1`
@@ -73,7 +70,7 @@ echo    " Project: $ProjectName                               "
 echo    " Architecture: $ARCH                                 "
 echo    " Output directory: $OUT_DIR                          "
 echo    " Kernel version: $VERSION                            "
-echo	" Defconfig: $DEF				      "
+echo    " Defconfig: $DEF				      "
 echo    " Build user: $KBUILD_BUILD_USER                      "
 echo    " Build machine: $KBUILD_BUILD_HOST                   "
 echo    " Build started on: $BUILD_START                      "
@@ -83,7 +80,5 @@ echo -e "-----------------------------------------------------"
 [ -d ${OUT_DIR} ] && rm -rf ${OUT_DIR} 
 mkdir ${OUT_DIR} 
 make mrproper ${OUT_DIR} 
-make ${COMMON_ARGS} $DEF 
-#make ${COMMON_ARGS} nconfig 
-time make -j$(nproc --all) ${COMMON_ARGS} 
-#cp ${OUT_DIR}/arch/arm/boot/zImage $(pwd)/arch/arm/boot/zImage
+make ${COMMON_ARGS} $DEFCONFIG
+time make -j$(nproc --all) ${COMMON_ARGS}
